@@ -23,6 +23,7 @@ dependencies {
     implementation("com.uwyn.rife2:rife2:0.9.3-SNAPSHOT")
     runtimeOnly("org.eclipse.jetty:jetty-server:11.0.13")
     runtimeOnly("org.eclipse.jetty:jetty-servlet:11.0.13")
+    runtimeOnly("org.postgresql:postgresql:42.5.1")
     runtimeOnly("com.h2database:h2:2.1.214")
 }
 

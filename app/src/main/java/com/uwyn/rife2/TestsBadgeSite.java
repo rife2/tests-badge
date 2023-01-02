@@ -10,6 +10,7 @@ import com.uwyn.rife2.models.TestBadge;
 import rife.authentication.credentialsmanagers.RoleUserAttributes;
 import rife.authentication.elements.*;
 import rife.authentication.sessionvalidators.MemorySessionValidator;
+import rife.config.RifeConfig;
 import rife.database.Datasource;
 import rife.database.exceptions.ExecutionErrorException;
 import rife.database.querymanagers.generic.GenericQueryManager;
@@ -24,9 +25,9 @@ public class TestsBadgeSite extends Site {
     final MemorySessionValidator validator = new MemorySessionValidator();
     final AuthConfig config = new AuthConfig(validator);
 
-    public final Datasource datasource;
-    public final GenericQueryManager<TestBadge> badgeManager;
-    public final GenericQueryManager<ApiKey> apiManager;
+    public Datasource datasource;
+    public GenericQueryManager<TestBadge> badgeManager;
+    public GenericQueryManager<ApiKey> apiManager;
 
     public TestsBadgeSite() {
         this(new Datasource("org.h2.Driver", "jdbc:h2:./embedded_dbs/h2/tests-badge", "sa", "", 20));
@@ -34,8 +35,6 @@ public class TestsBadgeSite extends Site {
 
     public TestsBadgeSite(Datasource ds) {
         datasource = ds;
-        badgeManager = GenericQueryManagerFactory.instance(datasource, TestBadge.class);
-        apiManager = GenericQueryManagerFactory.instance(datasource, ApiKey.class);
     }
 
     // create the routes
@@ -50,6 +49,22 @@ public class TestsBadgeSite extends Site {
 
     // set up the backend at startup
     public void setup() {
+        if (Boolean.getBoolean("tests-badge.production.deployment")) {
+            var proxy_root_url = System.getProperty("tests-badge.proxy.root");
+            if (proxy_root_url != null) {
+                RifeConfig.engine().setProxyRootUrl(proxy_root_url);
+            }
+
+            datasource = new Datasource(
+                "org.postgresql.Driver",
+                "jdbc:postgresql://localhost:5432/" + System.getProperty("tests-badge.database.name"),
+                System.getProperty("tests-badge.database.user"),
+                System.getProperty("tests-badge.database.password"),
+                10);
+            badgeManager = GenericQueryManagerFactory.instance(datasource, TestBadge.class);
+            apiManager = GenericQueryManagerFactory.instance(datasource, ApiKey.class);
+        }
+
         // install the database structure if it doesn't exist yet
         try {
             badgeManager.install();
