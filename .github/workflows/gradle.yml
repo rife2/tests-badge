@@ -40,7 +40,7 @@ jobs:
             ${{ runner.os }}-gradle-${{ matrix.java-version }}-
 
       - name: Test with Gradle
-        run: ./gradlew clean check --stacktrace
+        run: ./gradlew clean test --stacktrace
 
 
       - name: Cleanup Gradle Cache
