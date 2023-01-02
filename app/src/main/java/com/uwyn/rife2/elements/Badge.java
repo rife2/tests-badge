@@ -5,6 +5,7 @@
 package com.uwyn.rife2.elements;
 
 import rife.engine.Context;
+import rife.tools.ServletUtils;
 
 public class Badge extends Common {
     static final int CHAR_WIDTH = 6;
@@ -13,6 +14,8 @@ public class Badge extends Common {
 
     public void process(Context c) {
         var badge = findExistingBadge(c);
+
+        ServletUtils.preventCaching(c.response());
 
         // update the badge SVG data
         var t = c.templateSvg();
