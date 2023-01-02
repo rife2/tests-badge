@@ -50,7 +50,7 @@ public class TestsBadgeSite extends Site {
     // set up the backend at startup
     public void setup() {
         if (properties().contains("tests-badge.production.deployment")) {
-            var proxy_root_url = System.getProperty("tests-badge.proxy.root");
+            var proxy_root_url = properties().getValueString("tests-badge.proxy.root");
             if (proxy_root_url != null) {
                 RifeConfig.engine().setProxyRootUrl(proxy_root_url);
             }
