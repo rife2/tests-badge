@@ -1,3 +1,5 @@
 .gradle
 .idea
 build
+test_dbs
+embedded_dbs
