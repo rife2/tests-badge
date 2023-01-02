@@ -49,7 +49,7 @@ public class TestsBadgeSite extends Site {
 
     // set up the backend at startup
     public void setup() {
-        if (Boolean.getBoolean("tests-badge.production.deployment")) {
+        if (properties().contains("tests-badge.production.deployment")) {
             var proxy_root_url = System.getProperty("tests-badge.proxy.root");
             if (proxy_root_url != null) {
                 RifeConfig.engine().setProxyRootUrl(proxy_root_url);
@@ -57,9 +57,9 @@ public class TestsBadgeSite extends Site {
 
             datasource = new Datasource(
                 "org.postgresql.Driver",
-                "jdbc:postgresql://localhost:5432/" + System.getProperty("tests-badge.database.name"),
-                System.getProperty("tests-badge.database.user"),
-                System.getProperty("tests-badge.database.password"),
+                "jdbc:postgresql://localhost:5432/" + properties().getValueString("tests-badge.database.name"),
+                properties().getValueString("tests-badge.database.user"),
+                properties().getValueString("tests-badge.database.password"),
                 10);
         }
         badgeManager = GenericQueryManagerFactory.instance(datasource, TestBadge.class);
@@ -91,8 +91,8 @@ public class TestsBadgeSite extends Site {
             .loginRoute(login)
             .landingRoute(api);
 
-        var admin_user = System.getProperty("tests-badge.admin.username", DEFAULT_ADMIN_USER);
-        var admin_password = System.getProperty("tests-badge.admin.password", DEFAULT_ADMIN_PASSWORD);
+        var admin_user = properties().getValueString("tests-badge.admin.username", DEFAULT_ADMIN_USER);
+        var admin_password = properties().getValueString("tests-badge.admin.password", DEFAULT_ADMIN_PASSWORD);
         validator.getCredentialsManager()
             .addUser(admin_user, new RoleUserAttributes().password(admin_password));
     }
