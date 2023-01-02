@@ -76,8 +76,8 @@ public class TestsBadgeSite extends Site {
             .loginRoute(login)
             .landingRoute(api);
 
-        var admin_user = System.getProperty("admin.username", DEFAULT_ADMIN_USER);
-        var admin_password = System.getProperty("admin.password", DEFAULT_ADMIN_PASSWORD);
+        var admin_user = System.getProperty("tests-badge.admin.username", DEFAULT_ADMIN_USER);
+        var admin_password = System.getProperty("tests-badge.admin.password", DEFAULT_ADMIN_PASSWORD);
         validator.getCredentialsManager()
             .addUser(admin_user, new RoleUserAttributes().password(admin_password));
     }

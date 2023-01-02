@@ -38,8 +38,8 @@ application {
         project.properties["testsBadgeAdminPassword"] != null
     ) {
         applicationDefaultJvmArgs = listOf(
-            "-Dadmin.username=${project.properties["testsBadgeAdminUsername"].toString()}",
-            "-Dadmin.password=${project.properties["testsBadgeAdminPassword"].toString()}"
+            "-Dtests-badge.admin.username=${project.properties["testsBadgeAdminUsername"].toString()}",
+            "-Dtests-badge.admin.password=${project.properties["testsBadgeAdminPassword"].toString()}"
         )
     }
 }

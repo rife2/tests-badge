@@ -1,2 +1,2 @@
 rootProject.name = "TestsBadge"
-include("app")
+include("app","war")
