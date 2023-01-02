@@ -9,6 +9,36 @@
             <param-name>rifeSiteClass</param-name>
             <param-value>com.uwyn.rife2.TestsBadgeSite</param-value>
         </init-param>
+        <!-- Uncomment and fill in param-value tags for production use
+        <init-param>
+            <param-name>tests-badge.production.deployment</param-name>
+            <param-value>true</param-value>
+        </init-param>
+        <init-param>
+            <param-name>tests-badge.proxy.root</param-name>
+            <param-value></param-value>
+        </init-param>
+        <init-param>
+            <param-name>tests-badge.database.name</param-name>
+            <param-value></param-value>
+        </init-param>
+        <init-param>
+            <param-name>tests-badge.database.user</param-name>
+            <param-value></param-value>
+        </init-param>
+        <init-param>
+            <param-name>tests-badge.database.password</param-name>
+            <param-value></param-value>
+        </init-param>
+        <init-param>
+            <param-name>tests-badge.admin.username</param-name>
+            <param-value></param-value>
+        </init-param>
+        <init-param>
+            <param-name>tests-badge.admin.password</param-name>
+            <param-value></param-value>
+        </init-param>
+        -->
     </filter>
 
     <filter-mapping>
