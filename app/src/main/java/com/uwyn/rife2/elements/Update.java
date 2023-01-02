@@ -48,7 +48,7 @@ public class Update extends Common {
         site.badgeManager.save(badge);
 
         // report the test badge info
-        var t = c.templateJson("Info");
+        var t = c.templateJson("info");
         t.setBean(badge);
         c.print(t);
     }

@@ -63,7 +63,7 @@ public class TestsBadgeSite extends Site {
         }
 
         // set up the protected API admin site section
-        var login = route("/login", new Login(config, TemplateFactory.HTML.get("Login")));
+        var login = route("/login", new Login(config, TemplateFactory.HTML.get("login")));
         group(new Router() {
             public void setup() {
                 before(new Authenticated(config));
