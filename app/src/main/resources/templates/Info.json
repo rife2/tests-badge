@@ -1,0 +1,7 @@
+{
+  "groupId": "{{v groupId/}}",
+  "artifactId": "{{v artifactId/}}",
+  "passed": {{v passed/}},
+  "failed": {{v failed/}},
+  "skipped": {{v skipped/}}
+}
