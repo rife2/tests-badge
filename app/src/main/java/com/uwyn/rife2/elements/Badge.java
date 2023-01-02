@@ -8,7 +8,7 @@ import rife.engine.Context;
 import rife.tools.ServletUtils;
 
 public class Badge extends Common {
-    static final int CHAR_WIDTH = 6;
+    static final double CHAR_WIDTH = 5.5;
     static final int SPACING = 7 * 2;
     static final int NAME_WIDTH = 42;
 
