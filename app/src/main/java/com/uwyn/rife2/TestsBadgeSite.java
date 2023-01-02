@@ -61,9 +61,9 @@ public class TestsBadgeSite extends Site {
                 System.getProperty("tests-badge.database.user"),
                 System.getProperty("tests-badge.database.password"),
                 10);
-            badgeManager = GenericQueryManagerFactory.instance(datasource, TestBadge.class);
-            apiManager = GenericQueryManagerFactory.instance(datasource, ApiKey.class);
         }
+        badgeManager = GenericQueryManagerFactory.instance(datasource, TestBadge.class);
+        apiManager = GenericQueryManagerFactory.instance(datasource, ApiKey.class);
 
         // install the database structure if it doesn't exist yet
         try {
