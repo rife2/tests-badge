@@ -13,8 +13,8 @@
         <stop stop-color="#CB2431" offset="100%"/>
     </linearGradient>
     <linearGradient id="pass-fill" x1="50%" y1="0%" x2="50%" y2="100%">
-        <stop stop-color="#1AA719" offset="0%"/>
-        <stop stop-color="#049B01" offset="100%"/>
+        <stop stop-color="#34D058" offset="0%"/>
+        <stop stop-color="#28A745" offset="100%"/>
     </linearGradient>
     <clipPath id="r">
         <rect width="{{v total-width/}}" height="20" rx="3" fill="#fff"/>
