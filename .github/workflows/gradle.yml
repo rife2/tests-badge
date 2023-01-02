@@ -40,7 +40,7 @@ jobs:
             ${{ runner.os }}-gradle-${{ matrix.java-version }}-
 
       - name: Test with Gradle
-        run: ./gradlew build check --stacktrace
+        run: ./gradlew -PtestsBadgeApiKey="$TESTS_BADGE_API_KEY" build check --stacktrace
 
       - name: Cleanup Gradle Cache
         run: |

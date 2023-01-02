@@ -113,7 +113,7 @@ tasks {
                                 HttpRequest.newBuilder()
                                     .uri(
                                         URI(
-                                            "https://rife2.com/testbadge/update/com.uwyn.rife2/tests-badge?" +
+                                            "https://rife2.com/tests-badge/update/com.uwyn.rife2/tests-badge?" +
                                                     "apiKey=$apiKey&" +
                                                     "passed=$passed&" +
                                                     "failed=$failed&" +
