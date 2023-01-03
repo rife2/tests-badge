@@ -5,10 +5,13 @@
 package com.uwyn.rife2.elements;
 
 import com.uwyn.rife2.models.ApiKey;
+import com.uwyn.rife2.models.TestBadge;
 import rife.engine.Context;
 import rife.engine.RequestMethod;
 import rife.tools.UniqueIDGenerator;
 import rife.validation.ValidationBuilderHtml;
+
+import java.util.Date;
 
 public class Api extends Common {
     public void process(Context c) {
@@ -26,6 +29,12 @@ public class Api extends Common {
                 // generate an API key and save it
                 api_key.setApiKey(UniqueIDGenerator.generate().toString());
                 site.apiManager.save(api_key);
+
+                // initialize the badge with 0 for all test counts
+                site.badgeManager.save(new TestBadge()
+                    .groupId(groupId)
+                    .artifactId(artifactId)
+                    .updated(new Date()));
 
                 // display the API key
                 t.setBean(api_key);

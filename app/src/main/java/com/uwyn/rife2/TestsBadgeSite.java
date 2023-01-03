@@ -85,6 +85,7 @@ public class TestsBadgeSite extends Site {
                 api = route("/api", Api.class);
             }
         });
+        fallback(c -> c.redirect("https://github.com/gbevin/tests-badge"));
 
         // set up the authentication
         config
