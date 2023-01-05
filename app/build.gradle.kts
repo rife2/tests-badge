@@ -14,7 +14,7 @@ repositories {
 
 group = "com.uwyn"
 
-val testsBadgeVersion by rootProject.extra { "1.0.0" }
+val testsBadgeVersion by rootProject.extra { "1.1.0" }
 base {
     archivesName.set("tests-badge")
     version = testsBadgeVersion
