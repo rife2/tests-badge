@@ -2,9 +2,11 @@ plugins {
     war
 }
 
+val testsBadgeVersion: String by rootProject.extra
+
 base {
     archivesName.set("tests-badge")
-    version = 1.0
+    version = testsBadgeVersion
 }
 
 repositories {

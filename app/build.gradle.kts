@@ -12,9 +12,10 @@ repositories {
     maven { url = uri("https://s01.oss.sonatype.org/content/repositories/snapshots") }
 }
 
+val testsBadgeVersion by rootProject.extra { "1.0.0" }
 base {
     archivesName.set("tests-badge")
-    version = "1.0.0"
+    version = testsBadgeVersion
 }
 
 dependencies {
