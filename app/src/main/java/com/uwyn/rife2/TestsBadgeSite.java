@@ -30,7 +30,6 @@ public class TestsBadgeSite extends Site {
     public GenericQueryManager<ApiKey> apiManager;
 
     public TestsBadgeSite() {
-        this(new Datasource("org.h2.Driver", "jdbc:h2:./embedded_dbs/h2/tests-badge", "sa", "", 20));
     }
 
     public TestsBadgeSite(Datasource ds) {
@@ -62,6 +61,10 @@ public class TestsBadgeSite extends Site {
                 properties().getValueString("tests-badge.database.password"),
                 10);
         }
+        else if (datasource == null) {
+            datasource = new Datasource("org.h2.Driver", "jdbc:h2:./embedded_dbs/h2/tests-badge", "sa", "", 20);
+        }
+
         badgeManager = GenericQueryManagerFactory.instance(datasource, TestBadge.class);
         apiManager = GenericQueryManagerFactory.instance(datasource, ApiKey.class);
 
