@@ -2,9 +2,9 @@
  * Copyright 2001-2022 Geert Bevin (gbevin[remove] at uwyn dot com)
  * Licensed under the Apache License, Version 2.0 (the "License")
  */
-package com.uwyn.rife2;
+package com.uwyn.testsbadge;
 
-import com.uwyn.rife2.models.ApiKey;
+import com.uwyn.testsbadge.models.ApiKey;
 import org.json.JSONObject;
 import org.junit.jupiter.api.*;
 import rife.database.Datasource;

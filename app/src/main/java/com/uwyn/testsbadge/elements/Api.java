@@ -2,10 +2,10 @@
  * Copyright 2001-2022 Geert Bevin (gbevin[remove] at uwyn dot com)
  * Licensed under the Apache License, Version 2.0 (the "License")
  */
-package com.uwyn.rife2.elements;
+package com.uwyn.testsbadge.elements;
 
-import com.uwyn.rife2.models.ApiKey;
-import com.uwyn.rife2.models.TestBadge;
+import com.uwyn.testsbadge.models.ApiKey;
+import com.uwyn.testsbadge.models.TestBadge;
 import rife.engine.Context;
 import rife.engine.RequestMethod;
 import rife.tools.UniqueIDGenerator;

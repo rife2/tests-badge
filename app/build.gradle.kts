@@ -12,6 +12,8 @@ repositories {
     maven { url = uri("https://s01.oss.sonatype.org/content/repositories/snapshots") }
 }
 
+group = "com.uwyn"
+
 val testsBadgeVersion by rootProject.extra { "1.0.0" }
 base {
     archivesName.set("tests-badge")
@@ -21,7 +23,7 @@ base {
 dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter:5.9.1")
     testImplementation("org.json:json:20220924")
-    implementation("com.uwyn.rife2:rife2:0.9.4")
+    implementation("com.uwyn.rife2:rife2:0.9.5-SNAPSHOT")
     runtimeOnly("org.eclipse.jetty:jetty-server:11.0.13")
     runtimeOnly("org.eclipse.jetty:jetty-servlet:11.0.13")
     runtimeOnly("org.postgresql:postgresql:42.5.1")
@@ -35,7 +37,7 @@ sourceSets {
 }
 
 application {
-    mainClass.set("com.uwyn.rife2.TestsBadgeSite")
+    mainClass.set("com.uwyn.testsbadge.TestsBadgeSite")
     if (project.properties["testsBadgeAdminUsername"] != null &&
         project.properties["testsBadgeAdminPassword"] != null
     ) {

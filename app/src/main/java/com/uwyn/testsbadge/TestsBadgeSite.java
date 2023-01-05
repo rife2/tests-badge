@@ -2,11 +2,11 @@
  * Copyright 2001-2022 Geert Bevin (gbevin[remove] at uwyn dot com)
  * Licensed under the Apache License, Version 2.0 (the "License")
  */
-package com.uwyn.rife2;
+package com.uwyn.testsbadge;
 
-import com.uwyn.rife2.elements.*;
-import com.uwyn.rife2.models.ApiKey;
-import com.uwyn.rife2.models.TestBadge;
+import com.uwyn.testsbadge.elements.*;
+import com.uwyn.testsbadge.models.ApiKey;
+import com.uwyn.testsbadge.models.TestBadge;
 import rife.authentication.credentialsmanagers.RoleUserAttributes;
 import rife.authentication.elements.*;
 import rife.authentication.sessionvalidators.MemorySessionValidator;
@@ -43,7 +43,7 @@ public class TestsBadgeSite extends Site {
     public Route api;
 
     private static void badgePathInfo(PathInfoMapping m) {
-        m.p("groupId", "[\\w\\.\\-_]+").s().p("artifactId", "[\\w\\.\\-_]+");
+        m.p("groupId").s().p("artifactId");
     }
 
     // set up the backend at startup

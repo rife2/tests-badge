@@ -7,7 +7,7 @@
         <filter-class>rife.servlet.RifeFilter</filter-class>
         <init-param>
             <param-name>rifeSiteClass</param-name>
-            <param-value>com.uwyn.rife2.TestsBadgeSite</param-value>
+            <param-value>com.uwyn.testsbadge.TestsBadgeSite</param-value>
         </init-param>
         <!-- Uncomment and fill in param-value tags for production use
         <init-param>

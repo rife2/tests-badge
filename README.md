@@ -43,7 +43,7 @@ already generated for these identifiers before, submitting them again will
 generate a new API key.
 
 Let's put in the identifiers of this project: 
-* Group ID : `com.uwyn.rife2`
+* Group ID : `com.uwyn.testsbadge`
 * Artifact ID : `tests-badge`
 
 Once submitted, you'll get a page with the API key and the details of how to use
@@ -53,20 +53,20 @@ For example:
 
 **Connection details**
 ```
-com.uwyn.rife2/tests-badge
+com.uwyn.testsbadge/tests-badge
 uUkkVIZpS3jSwPTCfZjxD6EKwZLKVhwe49-W
 ```
 
 **Connection examples**
 ```
 Show badge:
-http://localhost:8080/badge/com.uwyn.rife2/tests-badge
+http://localhost:8080/badge/com.uwyn.testsbadge/tests-badge
 
 Show info:
-http://localhost:8080/info/com.uwyn.rife2/tests-badge
+http://localhost:8080/info/com.uwyn.testsbadge/tests-badge
 
 Update test counts:
-curl http://localhost:8080/update/com.uwyn.rife2/tests-badge \
+curl http://localhost:8080/update/com.uwyn.testsbadge/tests-badge \
   -d "apiKey=uUkkVIZpS3jSwPTCfZjxD6EKwZLKVhwe49-W&passed=20&failed=0&skipped=0" \
   -X POST
 ```
@@ -79,12 +79,12 @@ integrate into your GitHub readme.
 For example:
 
 ```markdown
-![Tests](http://localhost:8080/badge/com.uwyn.rife2/tests-badge)](https://github.com/gbevin/tests-badge)
+![Tests](http://localhost:8080/badge/com.uwyn.testsbadge/tests-badge)](https://github.com/gbevin/tests-badge)
 ```
 
 ## Updating the test counts
 
-The `/update/com.uwyn.rife2/tests-badge` service endpoint is what you need to
+The `/update/com.uwyn.testsbadge/tests-badge` service endpoint is what you need to
 send a POST request to in order to update to test counts. These are the
 parameters to provide:
 * `apiKey` : the API key for your Group ID and Artifact ID
@@ -126,7 +126,7 @@ test {
                             HttpRequest.newBuilder()
                                 .uri(
                                     URI(
-                                        "http://localhost:8080/update/com.uwyn.rife2/tests-badge?" +
+                                        "http://localhost:8080/update/com.uwyn.testsbadge/tests-badge?" +
                                                 "apiKey=$apiKey&" +
                                                 "passed=$passed&" +
                                                 "failed=$failed&" +
