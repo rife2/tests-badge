@@ -1,4 +1,6 @@
 [![License](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Java](https://img.shields.io/badge/java-17%2B-blue)](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)
+[![Release](https://img.shields.io/github/release/gbevin/tests-badge.svg)](https://github.com/gbevin/tests-badge/releases/latest)
 [![GitHub CI](https://github.com/gbevin/tests-badge/actions/workflows/gradle.yml/badge.svg)](https://github.com/gbevin/tests-badge/actions/workflows/gradle.yml)
 [![Tests](https://rife2.com/tests-badge/badge/com.uwyn/tests-badge)](https://github.com/gbevin/tests-badge/actions/workflows/gradle.yml)
 
