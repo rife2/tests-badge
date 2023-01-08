@@ -23,7 +23,7 @@ base {
 dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter:5.9.1")
     testImplementation("org.json:json:20220924")
-    implementation("com.uwyn.rife2:rife2:0.9.5")
+    implementation("com.uwyn.rife2:rife2:0.9.6")
     runtimeOnly("org.eclipse.jetty:jetty-server:11.0.13")
     runtimeOnly("org.eclipse.jetty:jetty-servlet:11.0.13")
     runtimeOnly("org.postgresql:postgresql:42.5.1")
