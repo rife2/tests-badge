@@ -94,6 +94,8 @@ tasks {
     }
 
     test {
+        val apiKey = project.properties["testsBadgeApiKey"]
+
         useJUnitPlatform()
         testLogging {
             exceptionFormat = TestExceptionFormat.FULL
@@ -109,8 +111,7 @@ tasks {
                     val failed = result.failedTestCount
                     val skipped = result.skippedTestCount
 
-                    if (project.properties["testsBadgeApiKey"] != null) {
-                        val apiKey = project.properties["testsBadgeApiKey"]
+                    if (apiKey != null) {
                         val response: HttpResponse<String> = HttpClient.newHttpClient()
                             .send(
                                 HttpRequest.newBuilder()

@@ -106,6 +106,7 @@ You can hook a test listener into the Gradle test task, for example:
 
 ```kotlin
 test {
+    val apiKey = project.properties["testsBadgeApiKey"]
     useJUnitPlatform()
     testLogging {
         exceptionFormat = TestExceptionFormat.FULL
@@ -121,8 +122,7 @@ test {
                 val failed = result.failedTestCount
                 val skipped = result.skippedTestCount
 
-                if (project.properties["testsBadgeApiKey"] != null) {
-                    val apiKey = project.properties["testsBadgeApiKey"]
+                if (apiKey != null) {
                     val response: HttpResponse<String> = HttpClient.newHttpClient()
                         .send(
                             HttpRequest.newBuilder()
