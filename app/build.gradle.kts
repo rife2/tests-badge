@@ -1,10 +1,12 @@
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
+import com.uwyn.rife2.gradle.TemplateType.*
 import java.net.*
 import java.net.http.*
 
 plugins {
     application
+    id("com.uwyn.rife2") version "1.0.3"
 }
 
 repositories {
@@ -12,28 +14,24 @@ repositories {
     maven { url = uri("https://s01.oss.sonatype.org/content/repositories/snapshots") }
 }
 
-group = "com.uwyn"
-
-val testsBadgeVersion by rootProject.extra { "1.1.0" }
+val testsBadgeVersion by rootProject.extra { "1.2.0" }
 base {
     archivesName.set("tests-badge")
     version = testsBadgeVersion
+    group = "com.uwyn"
+}
+
+rife2 {
+    version.set("1.4.0")
+    useAgent.set(true)
+    precompiledTemplateTypes.addAll(HTML, SVG, JSON)
 }
 
 dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter:5.9.1")
     testImplementation("org.json:json:20220924")
-    implementation("com.uwyn.rife2:rife2:1.1.0")
-    runtimeOnly("org.eclipse.jetty:jetty-server:11.0.13")
-    runtimeOnly("org.eclipse.jetty:jetty-servlet:11.0.13")
     runtimeOnly("org.postgresql:postgresql:42.5.1")
     runtimeOnly("com.h2database:h2:2.1.214")
-}
-
-sourceSets {
-    main {
-        runtimeClasspath = files(file("src/main/resources"), runtimeClasspath);
-    }
 }
 
 application {
@@ -49,50 +47,6 @@ application {
 }
 
 tasks {
-    register<JavaExec>("precompileHtmlTemplates") {
-        classpath = sourceSets["main"].runtimeClasspath
-        mainClass.set("rife.template.TemplateDeployer")
-        args = listOf(
-            "-verbose",
-            "-t", "html",
-            "-d", "${projectDir}/build/classes/java/main",
-            "-encoding", "UTF-8", "${projectDir}/src/main/resources/templates"
-        )
-    }
-
-    register<JavaExec>("precompileSvgTemplates") {
-        classpath = sourceSets["main"].runtimeClasspath
-        mainClass.set("rife.template.TemplateDeployer")
-        args = listOf(
-            "-verbose",
-            "-t", "svg",
-            "-d", "${projectDir}/build/classes/java/main",
-            "-encoding", "UTF-8", "${projectDir}/src/main/resources/templates"
-        )
-    }
-
-    register<JavaExec>("precompileJsonTemplates") {
-        classpath = sourceSets["main"].runtimeClasspath
-        mainClass.set("rife.template.TemplateDeployer")
-        args = listOf(
-            "-verbose",
-            "-t", "json",
-            "-d", "${projectDir}/build/classes/java/main",
-            "-encoding", "UTF-8", "${projectDir}/src/main/resources/templates"
-        )
-    }
-
-    register("precompileTemplates") {
-        dependsOn("precompileHtmlTemplates")
-        dependsOn("precompileJsonTemplates")
-        dependsOn("precompileSvgTemplates")
-    }
-
-    jar {
-        dependsOn("precompileTemplates")
-        excludes.add("templates/**")
-    }
-
     test {
         val apiKey = project.properties["testsBadgeApiKey"]
 
