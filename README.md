@@ -13,7 +13,7 @@ It's up to you to integrate the web service API call into your test flow.
 
 For example these are the current test stats for the [RIFE2 web application framework](https://rife2.com):  
 
-[![RIFE2 Tests](https://rife2.com/tests-badge/badge/com.uwyn.rife2/rife2)](https://github.com/gbevin/rife2/actions/workflows/gradle.yml)
+[![RIFE2 Tests](https://rife2.com/tests-badge/badge/com.uwyn.rife2/rife2)](https://github.com/rife2/rife2/actions/workflows/gradle.yml)
 
 
 ## Running locally
@@ -196,7 +196,7 @@ tests-badge.admin.username         // TestsBadge admin user name
 tests-badge.admin.password         // TestsBadge admin user password
 ```
 
-[TestsBadge](https://github.com/gbevin/tests-badge) uses [RIFE2](https://github.com/gbevin/rife2)
+[TestsBadge](https://github.com/gbevin/tests-badge) uses [RIFE2](https://github.com/rife2/rife2)
 and its hierarchical properties system for configuration, meaning that you can
 provide application properties at many levels in the execution hierarchy, for
 instance through JVM properties, web.xml init-attributes, inside the route
