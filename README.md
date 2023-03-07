@@ -182,7 +182,7 @@ In order to get a war to deploy, all that's necessary is running:
 You can deploy this war file in a regular servlet container as any other war
 file. It is set up to use PostgreSQL in production, instead of the embedded H2
 database.
-If you want to change this, take a look at [src/main/java/com/uwyn/rife2/TestsBadgeSite.java](https://github.com/rife2/tests-badge/blob/main/app/src/main/java/com/uwyn/rife2/TestsBadgeSite.java).
+If you want to change this, take a look at [src/main/java/com/uwyn/testsbadge/TestsBadgeSite.java](https://github.com/rife2/tests-badge/blob/main/app/src/main/java/com/uwyn/testsbadge/TestsBadgeSite.java).
 
 The following production configuration properties are supported:
 
