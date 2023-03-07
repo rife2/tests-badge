@@ -6,7 +6,7 @@ import java.net.http.*
 
 plugins {
     application
-    id("com.uwyn.rife2") version "1.0.4"
+    id("com.uwyn.rife2") version "1.0.5"
 }
 
 repositories {
