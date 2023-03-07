@@ -30,18 +30,22 @@ public class Api extends Common {
                 api_key.setApiKey(UniqueIDGenerator.generate().toString());
                 site.apiManager.save(api_key);
 
-                // initialize the badge with 0 for all test counts
-                site.badgeManager.save(new TestBadge()
-                    .groupId(groupId)
-                    .artifactId(artifactId)
-                    .updated(new Date()));
+                if (findBadge() == null) {
+                    // initialize the badge with 0 for all test counts
+                    site.badgeManager.save(new TestBadge()
+                        .groupId(groupId)
+                        .artifactId(artifactId)
+                        .updated(new Date()));
+                }
 
                 // display the API key
                 t.setBean(api_key);
                 t.setBlock("content", "generated");
             } else {
-                // display validation error
-                new ValidationBuilderHtml().generateValidationErrors(t, api_key.getValidationErrors());
+                // display validation errors and markings
+                var builder = new ValidationBuilderHtml();
+                builder.generateValidationErrors(t, api_key.getValidationErrors());
+                builder.generateErrorMarkings(t, api_key.getValidationErrors());
             }
         }
 

@@ -1,16 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Tests Badge API Login</title>
-</head>
-<body>
-<!--v errors:*--><!--/v-->
-<!--b errormessage:*--><!--v errormessage/--><br><!--/b-->
-<form name="credentials" action="{{v route:/}}" method="post">
-  <input name="login" value="{{v param:login}}{{/v}}" type="text">
-  <input name="password" type="password">
-  <input type="submit" value="Login">
-</form>
-</body>
-</html>
+<!--i common.admin/-->
+
+<!--bv title-->Login<!--/bv-->
+
+<!--bv content-->
+  <h1>Tests Badge API</h1>
+
+  <!--i common.errors/-->
+  <form name="credentials" action="{{v route:/}}" method="post">
+    <input name="login" value="{{v param:login}}{{/v}}" type="text">
+    <input name="password" type="password"><br>
+    <input type="submit" value="Login">
+  </form>
+<!--/bv-->

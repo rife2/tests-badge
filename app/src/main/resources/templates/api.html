@@ -1,46 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Tests Badge API Access</title>
-</head>
-<body>
+<!--i common.admin/-->
 
-<!--v content/-->
+<!--bv title-->Access<!--/bv-->
+
 <!--bv content-->
-  <!--v errors:*--><!--/v-->
-  <!--b errormessage:*--><!--v errormessage/--><br><!--/b-->
+  <h1>Tests Badge API</h1>
+
+  <p>Create a new badge access by providing the following information.</p>
+
+  <!--i common.errors/-->
   <form action="{{v route:/}}" method="post">
-    <label for="groupId">Group ID</label> <input type="text" id="groupId" name="groupId" value="{{v param:groupId}}{{/v}}"><br>
-    <label for="artifactId">Artifact ID</label> <input type="text" id="artifactId" name="artifactId" value="{{v param:artifactId}}{{/v}}"><br>
+    <div id="api-details">
+      <label for="groupId" class="{{v mark:groupId}}{{/v}}">Group ID</label>
+      <span>
+        <input type="text" id="groupId" name="groupId" value="{{v param:groupId}}{{/v}}">
+        <!--v errors:groupId--><!--/v-->
+      </span>
+      <label for="artifactId" class="{{v mark:artifactId}}{{/v}}">Artifact ID</label>
+      <span>
+        <input type="text" id="artifactId" name="artifactId" value="{{v param:artifactId}}{{/v}}">
+        <!--v errors:artifactId--><!--/v-->
+      </span>
+    </div>
     <input type="submit" name="Submit">
   </form>
 <!--/bv-->
+
 <!--b generated-->
   <h1>API access</h1>
   <h2>Connection details</h2>
-  <pre>
-<!--v groupId/-->/<!--v artifactId/-->
-<!--v apiKey/-->
-  </pre>
+  Identifier
+  <pre><!--v groupId/-->/<!--v artifactId/--></pre><br>
+  API key
+  <pre><!--v apiKey/--></pre><br>
 
   <h2>Connection examples</h2>
   <p>
     Show badge:<br>
-    <a href="{{v route:.badge/}}/{{v groupId/}}/{{v artifactId/}}"><!--v route:.badge/-->/<!--v groupId/--> /<!--v artifactId/--></a>
+    <a href="{{v route:.badge/}}/{{v groupId/}}/{{v artifactId/}}"><!--v route:.badge/-->/<!--v groupId/-->/<!--v artifactId/--></a>
   </p>
   <p>
     Show info:<br>
-    <a href="{{v route:.info/}}/{{v groupId/}}/{{v artifactId/}}"><!--v route:.info/-->/<!--v groupId/--> /<!--v artifactId/--></a>
+    <a href="{{v route:.info/}}/{{v groupId/}}/{{v artifactId/}}"><!--v route:.info/-->/<!--v groupId/-->/<!--v artifactId/--></a>
   </p>
   <p>
     Update test counts:<br>
   <pre>curl <!--v route:.update/-->/<!--v groupId/-->/<!--v artifactId/--> \
   -d "apiKey=<!--v apiKey/-->&passed=20&failed=0&skipped=0" \
-  -X POST
-  </pre>
+  -X POST</pre>
   </p>
+  <p><a href="{{v route:/}}">back</a></p>
 <!--/b-->
-
-</body>
-</html>

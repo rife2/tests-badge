@@ -114,6 +114,8 @@ public class TestsBadgeSite extends Site {
     }
 
     public static void main(String[] args) {
-        new Server().start(new TestsBadgeSite());
+        new Server()
+            .staticResourceBase("src/main/webapp")
+            .start(new TestsBadgeSite());
     }
 }
