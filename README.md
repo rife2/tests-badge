@@ -1,8 +1,8 @@
 [![License](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Java](https://img.shields.io/badge/java-17%2B-blue)](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)
-[![Release](https://img.shields.io/github/release/gbevin/tests-badge.svg)](https://github.com/gbevin/tests-badge/releases/latest)
-[![GitHub CI](https://github.com/gbevin/tests-badge/actions/workflows/gradle.yml/badge.svg)](https://github.com/gbevin/tests-badge/actions/workflows/gradle.yml)
-[![Tests](https://rife2.com/tests-badge/badge/com.uwyn/tests-badge)](https://github.com/gbevin/tests-badge/actions/workflows/gradle.yml)
+[![Release](https://img.shields.io/github/release/rife2/tests-badge.svg)](https://github.com/rife2/tests-badge/releases/latest)
+[![GitHub CI](https://github.com/rife2/tests-badge/actions/workflows/gradle.yml/badge.svg)](https://github.com/rife2/tests-badge/actions/workflows/gradle.yml)
+[![Tests](https://rife2.com/tests-badge/badge/com.uwyn/tests-badge)](https://github.com/rife2/tests-badge/actions/workflows/gradle.yml)
 
 # Tests Badge
 
@@ -81,7 +81,7 @@ integrate into your GitHub readme.
 For example:
 
 ```markdown
-![Tests](http://localhost:8080/badge/com.uwyn.testsbadge/tests-badge)](https://github.com/gbevin/tests-badge)
+![Tests](http://localhost:8080/badge/com.uwyn.testsbadge/tests-badge)](https://github.com/rife2/tests-badge)
 ```
 
 ## Updating the test counts
@@ -182,7 +182,7 @@ In order to get a war to deploy, all that's necessary is running:
 You can deploy this war file in a regular servlet container as any other war
 file. It is set up to use PostgreSQL in production, instead of the embedded H2
 database.
-If you want to change this, take a look at [src/main/java/com/uwyn/rife2/TestsBadgeSite.java](https://github.com/gbevin/tests-badge/blob/main/app/src/main/java/com/uwyn/rife2/TestsBadgeSite.java).
+If you want to change this, take a look at [src/main/java/com/uwyn/rife2/TestsBadgeSite.java](https://github.com/rife2/tests-badge/blob/main/app/src/main/java/com/uwyn/rife2/TestsBadgeSite.java).
 
 The following production configuration properties are supported:
 
@@ -196,18 +196,18 @@ tests-badge.admin.username         // TestsBadge admin user name
 tests-badge.admin.password         // TestsBadge admin user password
 ```
 
-[TestsBadge](https://github.com/gbevin/tests-badge) uses [RIFE2](https://github.com/rife2/rife2)
+[TestsBadge](https://github.com/rife2/tests-badge) uses [RIFE2](https://github.com/rife2/rife2)
 and its hierarchical properties system for configuration, meaning that you can
 provide application properties at many levels in the execution hierarchy, for
 instance through JVM properties, web.xml init-attributes, inside the route
 configuration, ...
 
-I recommend tweaking the [web.xml](https://github.com/gbevin/tests-badge/blob/main/war/src/web.xml)
+I recommend tweaking the [web.xml](https://github.com/rife2/tests-badge/blob/main/war/src/web.xml)
 file and adding `init-param`s in order to set any of the properties above.
 
 ## Contact me to have me host your badge
 
-I have set up the [TestsBadge](https://github.com/gbevin/tests-badge) web
+I have set up the [TestsBadge](https://github.com/rife2/tests-badge) web
 service for myself and my projects. Provided I don't get overloaded with
 requests, I'm willing to host test badges for other open-source projects.
 

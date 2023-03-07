@@ -99,7 +99,7 @@ public class TestsBadgeSite extends Site {
                 api = route("/api", Api.class);
             }
         });
-        fallback(c -> c.redirect("https://github.com/gbevin/tests-badge"));
+        fallback(c -> c.redirect("https://github.com/rife2/tests-badge"));
     }
 
     private void setupAuthentication() {
