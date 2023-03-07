@@ -6,7 +6,7 @@ import java.net.http.*
 
 plugins {
     application
-    id("com.uwyn.rife2") version "1.0.6"
+    id("com.uwyn.rife2") version "1.0.7"
     id("org.graalvm.buildtools.native") version "0.9.20"
 }
 
@@ -92,10 +92,7 @@ tasks {
     }
 }
 
-graalvmNative {
-    metadataRepository.enabled.set(true)
-    binaries.all {
-        buildArgs.add("--enable-preview") // support for Jetty virtual threads with JDK 19
-        imageName.set("tests-badge-$version")
-    }
+graalvmNative.binaries.all {
+    buildArgs.add("--enable-preview") // support for Jetty virtual threads with JDK 19
+    imageName.set("tests-badge-$version")
 }
