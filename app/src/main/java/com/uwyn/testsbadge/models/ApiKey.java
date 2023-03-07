@@ -7,11 +7,11 @@ package com.uwyn.testsbadge.models;
 import rife.validation.*;
 
 public class ApiKey extends MetaData {
-    private Integer id_;
-    private String groupId_;
-    private String artifactId_;
+    private Integer id;
+    private String groupId;
+    private String artifactId;
 
-    private String apiKey_;
+    private String apiKey;
 
     public void activateMetaData() {
         addConstraint(new ConstrainedBean().unique("groupId", "artifactId"));
@@ -31,15 +31,15 @@ public class ApiKey extends MetaData {
                 .notEmpty(true));
     }
 
-    public Integer getId()                       { return id_; }
-    public void setId(Integer id)                { id_ = id; }
-    public String getGroupId()                   { return groupId_; }
+    public Integer getId()                       { return id; }
+    public void setId(Integer id)                { this.id = id; }
+    public String getGroupId()                   { return groupId; }
     public ApiKey groupId(String groupId)        { setGroupId(groupId); return this; }
-    public void setGroupId(String groupId)       { groupId_ = groupId; }
-    public String getArtifactId()                { return artifactId_; }
-    public void setArtifactId(String artifactId) { artifactId_ = artifactId; }
+    public void setGroupId(String groupId)       { this.groupId = groupId; }
+    public String getArtifactId()                { return artifactId; }
+    public void setArtifactId(String artifactId) { this.artifactId = artifactId; }
     public ApiKey artifactId(String artifactId)  { setArtifactId(artifactId); return this; }
-    public String getApiKey()                    { return apiKey_; }
-    public void setApiKey(String apiKey)         { apiKey_ = apiKey; }
+    public String getApiKey()                    { return apiKey; }
+    public void setApiKey(String apiKey)         { this.apiKey = apiKey; }
     public ApiKey apiKey(String apiKey)          { setApiKey(apiKey); return this;}
 }

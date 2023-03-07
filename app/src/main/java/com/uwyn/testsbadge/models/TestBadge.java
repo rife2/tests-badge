@@ -9,13 +9,13 @@ import rife.validation.*;
 import java.util.Date;
 
 public class TestBadge extends MetaData {
-    private Integer id_;
-    private String groupId_;
-    private String artifactId_;
-    private Date updated_;
-    private int passed_;
-    private int failed_;
-    private int skipped_;
+    private Integer id;
+    private String groupId;
+    private String artifactId;
+    private Date updated;
+    private int passed;
+    private int failed;
+    private int skipped;
 
     public void activateMetaData() {
         addConstraint(new ConstrainedBean().unique("groupId", "artifactId"));
@@ -41,24 +41,24 @@ public class TestBadge extends MetaData {
             .defaultValue(0));
     }
 
-    public Integer getId()                         { return id_; }
-    public void setId(Integer id)                  { id_ = id; }
-    public String getGroupId()                     { return groupId_; }
-    public void setGroupId(String groupId)         { groupId_ = groupId; }
+    public Integer getId()                         { return id; }
+    public void setId(Integer id)                  { this.id = id; }
+    public String getGroupId()                     { return groupId; }
+    public void setGroupId(String groupId)         { this.groupId = groupId; }
     public TestBadge groupId(String groupId)       { setGroupId(groupId); return this; }
-    public String getArtifactId()                  { return artifactId_; }
-    public void setArtifactId(String artifactId)   { artifactId_ = artifactId; }
+    public String getArtifactId()                  { return artifactId; }
+    public void setArtifactId(String artifactId)   { this.artifactId = artifactId; }
     public TestBadge artifactId(String artifactId) { setArtifactId(artifactId); return this; }
-    public Date getUpdated()                       { return updated_; }
-    public void setUpdated(Date updated)           { updated_ = updated; }
+    public Date getUpdated()                       { return updated; }
+    public void setUpdated(Date updated)           { this.updated = updated; }
     public TestBadge updated(Date updated)         { setUpdated(updated); return this; }
-    public int getPassed()                         { return passed_; }
-    public void setPassed(int passed)              { passed_ = passed; }
+    public int getPassed()                         { return passed; }
+    public void setPassed(int passed)              { this.passed = passed; }
     public TestBadge passed(int passed)            { setPassed(passed); return this; }
-    public int getFailed()                         { return failed_; }
-    public void setFailed(int failed)              { failed_ = failed; }
+    public int getFailed()                         { return failed; }
+    public void setFailed(int failed)              { this.failed = failed; }
     public TestBadge failed(int failed)            { setFailed(failed); return this; }
-    public int getSkipped()                        { return skipped_; }
-    public void setSkipped(int skipped)            { skipped_ = skipped; }
+    public int getSkipped()                        { return skipped; }
+    public void setSkipped(int skipped)            { this.skipped = skipped; }
     public TestBadge skipped(int skipped)          { setSkipped(skipped); return this; }
 }

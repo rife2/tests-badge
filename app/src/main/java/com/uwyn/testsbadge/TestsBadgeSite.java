@@ -41,6 +41,7 @@ public class TestsBadgeSite extends Site {
     public Route badge = get("/badge", PathInfoHandling.MAP(TestsBadgeSite::badgePathInfo), Badge.class);
     public Route info = get("/info", PathInfoHandling.MAP(TestsBadgeSite::badgePathInfo), Info.class);
     public Route api;
+    public Route login;
 
     private static void badgePathInfo(PathInfoMapping m) {
         m.p("groupId").s().p("artifactId");
@@ -48,6 +49,13 @@ public class TestsBadgeSite extends Site {
 
     // set up the backend at startup
     public void setup() {
+        setupDatasource();
+        setupManagers();
+        setupApiAdmin();
+        setupAuthentication();
+    }
+
+    private void setupDatasource() {
         if (properties().contains("tests-badge.production.deployment")) {
             var proxy_root_url = properties().getValueString("tests-badge.proxy.root");
             if (proxy_root_url != null) {
@@ -64,7 +72,9 @@ public class TestsBadgeSite extends Site {
         else if (datasource == null) {
             datasource = new Datasource("org.h2.Driver", "jdbc:h2:./embedded_dbs/h2/tests-badge", "sa", "", 20);
         }
+    }
 
+    private void setupManagers() {
         badgeManager = GenericQueryManagerFactory.instance(datasource, TestBadge.class);
         apiManager = GenericQueryManagerFactory.instance(datasource, ApiKey.class);
 
@@ -79,9 +89,10 @@ public class TestsBadgeSite extends Site {
         } catch (ExecutionErrorException e) {
             if (!e.getCause().getMessage().contains("already exists")) throw e;
         }
+    }
 
-        // set up the protected API admin site section
-        var login = route("/login", new Login(config, TemplateFactory.HTML.get("login")));
+    private void setupApiAdmin() {
+        login = route("/login", new Login(config, TemplateFactory.HTML.get("login")));
         group(new Router() {
             public void setup() {
                 before(new Authenticated(config));
@@ -89,8 +100,9 @@ public class TestsBadgeSite extends Site {
             }
         });
         fallback(c -> c.redirect("https://github.com/gbevin/tests-badge"));
+    }
 
-        // set up the authentication
+    private void setupAuthentication() {
         config
             .loginRoute(login)
             .landingRoute(api);
