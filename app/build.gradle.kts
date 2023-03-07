@@ -7,6 +7,7 @@ import java.net.http.*
 plugins {
     application
     id("com.uwyn.rife2") version "1.0.7"
+    `maven-publish`
     id("org.graalvm.buildtools.native") version "0.9.20"
 }
 
@@ -89,6 +90,21 @@ tasks {
                 }
             }
         })
+    }
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "Build"
+            url = uri(rootProject.layout.buildDirectory.dir("repo"))
+        }
+    }
+    publications {
+        create<MavenPublication>("maven") {
+            artifactId = rootProject.name
+            from(components["java"])
+        }
     }
 }
 
