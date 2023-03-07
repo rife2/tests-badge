@@ -15,10 +15,11 @@ repositories {
 }
 
 val testsBadgeVersion by rootProject.extra { "1.3.0" }
+version = testsBadgeVersion
+group = "com.uwyn"
+
 base {
     archivesName.set("tests-badge")
-    version = testsBadgeVersion
-    group = "com.uwyn"
 }
 
 rife2 {

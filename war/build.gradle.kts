@@ -3,10 +3,11 @@ plugins {
 }
 
 val testsBadgeVersion: String by rootProject.extra
+version = testsBadgeVersion
+group = "com.uwyn"
 
 base {
     archivesName.set("tests-badge")
-    version = testsBadgeVersion
 }
 
 repositories {
@@ -21,5 +22,4 @@ dependencies {
 tasks.war {
     webAppDirectory.set(file("../app/src/main/webapp"))
     webXml = file("src/web.xml")
-    rootSpec.exclude("**/jetty*.jar", "**/slf4j*.jar")
 }
