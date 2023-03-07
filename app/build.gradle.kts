@@ -24,7 +24,7 @@ base {
 
 rife2 {
     version.set("1.4.0")
-    useAgent.set(true)
+    uberMainClass.set("com.uwyn.testsbadge.TestsBadgeSiteUber")
     precompiledTemplateTypes.addAll(HTML, SVG, JSON)
 }
 
