@@ -93,6 +93,7 @@ tasks {
 }
 
 graalvmNative {
+    metadataRepository.enabled.set(true)
     binaries.all {
         buildArgs.add("--enable-preview") // support for Jetty virtual threads with JDK 19
         imageName.set("tests-badge-$version")
