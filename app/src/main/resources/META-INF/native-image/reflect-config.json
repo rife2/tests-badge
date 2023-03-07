@@ -1,0 +1,120 @@
+[
+  {
+    "name":"com.uwyn.testsbadge.models.ApiKey",
+    "methods":[
+      {"name":"<init>","parameterTypes":[] },
+      {"name":"getId","parameterTypes":[] },
+      {"name":"getGroupId","parameterTypes":[] },
+      {"name":"getArtifactId","parameterTypes":[] },
+      {"name":"getApiKey","parameterTypes":[] },
+      {"name":"setId","parameterTypes":["java.lang.Integer"] },
+      {"name":"setGroupId","parameterTypes":["java.lang.String"] },
+      {"name":"groupId","parameterTypes":["java.lang.String"] },
+      {"name":"setArtifactId","parameterTypes":["java.lang.String"] },
+      {"name":"artifactId","parameterTypes":["java.lang.String"] },
+      {"name":"setApiKey","parameterTypes":["java.lang.String"] },
+      {"name":"apiKey","parameterTypes":["java.lang.String"] }
+    ],
+    "queryAllPublicConstructors":true,
+    "queryAllPublicMethods":true
+  },
+  {
+    "name":"com.uwyn.testsbadge.models.TestBadge",
+    "methods":[
+      {"name":"<init>","parameterTypes":[] },
+      {"name":"getId","parameterTypes":[] },
+      {"name":"getGroupId","parameterTypes":[] },
+      {"name":"getArtifactId","parameterTypes":[] },
+      {"name":"getUpdated","parameterTypes":[] },
+      {"name":"getPassed","parameterTypes":[] },
+      {"name":"getFailed","parameterTypes":[] },
+      {"name":"getSkipped","parameterTypes":[] },
+      {"name":"setId","parameterTypes":["java.lang.Integer"] },
+      {"name":"setGroupId","parameterTypes":["java.lang.String"] },
+      {"name":"groupId","parameterTypes":["java.lang.String"] },
+      {"name":"setArtifactId","parameterTypes":["java.lang.String"] },
+      {"name":"artifactId","parameterTypes":["java.lang.String"] },
+      {"name":"setUpdated","parameterTypes":["java.util.Date"] },
+      {"name":"updated","parameterTypes":["java.util.Date"] },
+      {"name":"setPassed","parameterTypes":["int"] },
+      {"name":"passed","parameterTypes":["int"] },
+      {"name":"setFailed","parameterTypes":["int"] },
+      {"name":"failed","parameterTypes":["int"] },
+      {"name":"setSkipped","parameterTypes":["int"] },
+      {"name":"skipped","parameterTypes":["int"] }
+    ],
+    "queryAllPublicConstructors":true,
+    "queryAllPublicMethods":true
+  },
+  {
+    "name":"com.uwyn.testsbadge.TestsBadgeSite",
+    "methods":[{"name":"<init>","parameterTypes":[] }],
+    "fields":[
+      {"name":"datasource"},
+      {"name":"badgeManager"},
+      {"name":"apiManager"},
+      {"name":"update"},
+      {"name":"badge"},
+      {"name":"info"},
+      {"name":"api"},
+      {"name":"login"}
+    ]
+  },
+  {
+    "name":"com.uwyn.testsbadge.elements.Api",
+    "methods":[{"name":"<init>","parameterTypes":[] }],
+    "queryAllPublicConstructors":true,
+    "queryAllPublicMethods":true
+  },
+  {
+    "name":"com.uwyn.testsbadge.elements.Badge",
+    "methods":[{"name":"<init>","parameterTypes":[] }],
+    "queryAllPublicConstructors":true,
+    "queryAllPublicMethods":true
+  },
+  {
+    "name":"com.uwyn.testsbadge.elements.Common",
+    "fields":[
+      {"name":"site"},
+      {"name":"groupId"},
+      {"name":"artifactId"}
+    ],
+    "methods":[{"name":"<init>","parameterTypes":[] }],
+    "queryAllPublicConstructors":true,
+    "queryAllPublicMethods":true
+  },
+  {
+    "name":"com.uwyn.testsbadge.elements.Info",
+    "methods":[{"name":"<init>","parameterTypes":[] }],
+    "queryAllPublicConstructors":true,
+    "queryAllPublicMethods":true
+  },
+  {
+    "name":"com.uwyn.testsbadge.elements.Update",
+    "fields":[
+      {"name":"apiKey"},
+      {"name":"passed"},
+      {"name":"failed"},
+      {"name":"skipped"}
+    ],
+    "methods":[{"name":"<init>","parameterTypes":[] }],
+    "queryAllPublicConstructors":true,
+    "queryAllPublicMethods":true
+  },
+  {
+    "name":"rife.template.html.api",
+    "methods":[{"name":"<init>","parameterTypes":[] }]
+  },
+  {
+    "name":"rife.template.html.login",
+    "methods":[{"name":"<init>","parameterTypes":[] }]
+  },
+  {
+    "name":"rife.template.svg.badge",
+    "methods":[{"name":"<init>","parameterTypes":[] }]
+  },
+  {
+    "name":"rife.template.json.info",
+    "methods":[{"name":"<init>","parameterTypes":[] }]
+  }
+]

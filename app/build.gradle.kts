@@ -7,6 +7,7 @@ import java.net.http.*
 plugins {
     application
     id("com.uwyn.rife2") version "1.0.6"
+    id("org.graalvm.buildtools.native") version "0.9.20"
 }
 
 repositories {
@@ -14,7 +15,7 @@ repositories {
     maven { url = uri("https://s01.oss.sonatype.org/content/repositories/snapshots") }
 }
 
-val testsBadgeVersion by rootProject.extra { "1.3.0" }
+val testsBadgeVersion by rootProject.extra { "1.4.0" }
 version = testsBadgeVersion
 group = "com.uwyn"
 
@@ -23,7 +24,7 @@ base {
 }
 
 rife2 {
-    version.set("1.4.0")
+    version.set("1.4.1-SNAPSHOT")
     uberMainClass.set("com.uwyn.testsbadge.TestsBadgeSiteUber")
     precompiledTemplateTypes.addAll(HTML, SVG, JSON)
 }
@@ -88,5 +89,12 @@ tasks {
                 }
             }
         })
+    }
+}
+
+graalvmNative {
+    binaries.all {
+        buildArgs.add("--enable-preview") // support for Jetty virtual threads with JDK 19
+        imageName.set("tests-badge-$version")
     }
 }

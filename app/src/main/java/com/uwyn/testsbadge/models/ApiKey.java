@@ -34,8 +34,8 @@ public class ApiKey extends MetaData {
     public Integer getId()                       { return id; }
     public void setId(Integer id)                { this.id = id; }
     public String getGroupId()                   { return groupId; }
-    public ApiKey groupId(String groupId)        { setGroupId(groupId); return this; }
     public void setGroupId(String groupId)       { this.groupId = groupId; }
+    public ApiKey groupId(String groupId)        { setGroupId(groupId); return this; }
     public String getArtifactId()                { return artifactId; }
     public void setArtifactId(String artifactId) { this.artifactId = artifactId; }
     public ApiKey artifactId(String artifactId)  { setArtifactId(artifactId); return this; }
