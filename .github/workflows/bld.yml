@@ -22,8 +22,5 @@ jobs:
           distribution: 'temurin'
           java-version: ${{ matrix.java-version }}
 
-      - name: Grant execute permission
-        run: chmod +x bld.sh
-
       - name: Run tests
-        run: ./bld.sh compile test -DtestsBadgeApiKey=${{ secrets.TESTS_BADGE_API_KEY }}
+        run: ./bld.sh download compile test -DtestsBadgeApiKey=${{ secrets.TESTS_BADGE_API_KEY }}
