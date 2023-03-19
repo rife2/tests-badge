@@ -70,7 +70,7 @@ class TestsBadgeTest {
         assertEquals(failed, json.optQuery("/failed"));
         assertEquals(skipped, json.optQuery("/skipped"));
 
-        assertEquals(404, conversation.doRequest("/info/com.unknown/artifact").getStatus());
+        assertEquals(403, conversation.doRequest("/info/com.unknown/artifact").getStatus());
     }
 
     @Test
