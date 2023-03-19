@@ -8,7 +8,7 @@ import rife.bld.operations.TestOperation;
 
 import java.net.URI;
 import java.net.http.*;
-import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.regex.Pattern;
 
 public class BadgeTestOperation extends TestOperation {
@@ -18,7 +18,7 @@ public class BadgeTestOperation extends TestOperation {
         apiKey_ = apiKey;
     }
 
-    public Consumer<String> outputConsumer() {
+    public Function<String, Boolean> outputProcessor() {
         return s -> {
             System.out.println(s);
 
@@ -48,6 +48,8 @@ public class BadgeTestOperation extends TestOperation {
                     }
                 }
             }
+
+            return true;
         };
     }
 }
