@@ -26,8 +26,8 @@ jobs:
           distribution: 'temurin'
           java-version: ${{ matrix.java-version }}
 
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
+      - name: Grant execute permission
+        run: chmod +x bld.sh
 
       - name: Run tests
         run: ./bld.sh compile test -DtestsBadgeApiKey=${{ secrets.TESTS_BADGE_API_KEY }}
