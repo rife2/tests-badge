@@ -1,5 +1,12 @@
 .gradle
-.idea
+.DS_Store
 build
-test_dbs
+lib/bld/**
+lib/compile/**
+lib/runtime/**
+lib/standalone/**
+lib/test/**
+!bld-wrapper.jar
+!bld-wrapper.properties
 embedded_dbs
+test_dbs

@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Run Tests" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+    <module name="app" />
+    <option name="PACKAGE_NAME" value="com.uwyn.testsbadge" />
+    <option name="MAIN_CLASS_NAME" value="com.uwyn.testsbadge.TestsBadgeTest" />
+    <option name="METHOD_NAME" value="" />
+    <option name="TEST_OBJECT" value="class" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

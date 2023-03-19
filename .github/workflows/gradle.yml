@@ -29,7 +29,6 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      - name: Test with Gradle
-        uses: gradle/gradle-build-action@v2
+      - name: Run tests
         with:
-          arguments: build check --stacktrace -PtestsBadgeApiKey=${{ secrets.TESTS_BADGE_API_KEY }}
+          arguments: ./bld.sh compile test -DtestsBadgeApiKey=${{ secrets.TESTS_BADGE_API_KEY }}
