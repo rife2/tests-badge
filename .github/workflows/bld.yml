@@ -30,5 +30,4 @@ jobs:
         run: chmod +x gradlew
 
       - name: Run tests
-        with:
-          arguments: ./bld.sh compile test -DtestsBadgeApiKey=${{ secrets.TESTS_BADGE_API_KEY }}
+        run: ./bld.sh compile test -DtestsBadgeApiKey=${{ secrets.TESTS_BADGE_API_KEY }}
