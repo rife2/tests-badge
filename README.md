@@ -176,7 +176,7 @@ Put the API key as its value, and you're set!
 In order to get a war to deploy, all that's necessary is running:
 
 ```bash
-./gradlew clean war
+./bld.sh war
 ```
 
 You can deploy this war file in a regular servlet container as any other war

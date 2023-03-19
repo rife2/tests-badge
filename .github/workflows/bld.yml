@@ -1,14 +1,10 @@
-name: gradle-ci
+name: badge-ci
 
 on: [push, pull_request, workflow_dispatch]
 
 jobs:
-  build-gradle-project:
+  build-project:
     runs-on: ubuntu-latest
-
-    env:
-      GRADLE_OPTS: "-Dorg.gradle.jvmargs=-XX:MaxMetaspaceSize=512m"
-      SONAR_JDK: "11"
 
     strategy:
      matrix:
@@ -30,4 +26,4 @@ jobs:
         run: chmod +x bld.sh
 
       - name: Run tests
-        run: ./bld.sh compile test -DtestsBadgeApiKey=${{ secrets.TESTS_BADGE_API_KEY }}
+        run: ./bld.sh download compile test -DtestsBadgeApiKey=${{ secrets.TESTS_BADGE_API_KEY }}
