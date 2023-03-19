@@ -26,4 +26,4 @@ jobs:
         run: chmod +x bld.sh
 
       - name: Run tests
-        run: ./bld.sh download compile test -DtestsBadgeApiKey=${{ secrets.TESTS_BADGE_API_KEY }}
+        run: ./bld.sh compile test -DtestsBadgeApiKey=${{ secrets.TESTS_BADGE_API_KEY }}
