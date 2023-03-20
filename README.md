@@ -16,6 +16,18 @@ For example these are the current test stats for the [RIFE2 web application fram
 [![RIFE2 Tests](https://rife2.com/tests-badge/badge/com.uwyn.rife2/rife2)](https://github.com/rife2/rife2/actions/workflows/gradle.yml)
 
 
+## Download the dependencies
+
+When you check out the project for the first time, the dependency libraries are
+missing as they are not committed to source control. In order to be able to
+compile and run the application, you need to download the dependencies once.
+
+This can be easily done by typing:
+
+```bash
+./bld.sh download
+```
+
 ## Running locally
 
 This web service is implemented in the [RIFE2](https://rife2.com), to run it
