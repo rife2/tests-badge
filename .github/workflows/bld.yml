@@ -23,4 +23,4 @@ jobs:
           java-version: ${{ matrix.java-version }}
 
       - name: Run tests
-        run: ./bld.sh download compile test -DtestsBadgeApiKey=${{ secrets.TESTS_BADGE_API_KEY }}
+        run: ./bld download compile test -DtestsBadgeApiKey=${{ secrets.TESTS_BADGE_API_KEY }}
