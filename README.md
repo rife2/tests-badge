@@ -25,7 +25,7 @@ compile and run the application, you need to download the dependencies once.
 This can be easily done by typing:
 
 ```bash
-./bld.sh download
+./bld download
 ```
 
 ## Running locally
@@ -34,7 +34,7 @@ This web service is implemented in the [RIFE2](https://rife2.com), to run it
 locally, simply execute:
 
 ```bash
-./bld.sh compile run
+./bld compile run
 ```
 
 This will start the web application locally, using H2 as the embedded database.
@@ -188,7 +188,7 @@ Put the API key as its value, and you're set!
 In order to get a war to deploy, all that's necessary is running:
 
 ```bash
-./bld.sh war
+./bld war
 ```
 
 You can deploy this war file in a regular servlet container as any other war

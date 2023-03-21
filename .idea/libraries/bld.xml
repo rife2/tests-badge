@@ -2,7 +2,7 @@
   <library name="bld">
     <CLASSES>
       <root url="file://$PROJECT_DIR$/lib/bld" />
-      <root url="jar://$USER_HOME$/.rife2/dist/rife2-1.5.1.jar!/" />
+      <root url="jar://$USER_HOME$/.rife2/dist/rife2-1.5.2.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
