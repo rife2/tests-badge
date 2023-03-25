@@ -22,9 +22,10 @@ public class TestsBadgeBuild extends WebProject {
 
         precompiledTemplateTypes = List.of(HTML, SVG, JSON);
 
+        downloadSources = true;
         repositories = List.of(MAVEN_CENTRAL, SONATYPE_SNAPSHOTS);
         scope(compile)
-            .include(dependency("com.uwyn.rife2", "rife2", version(1,5,5)));
+            .include(dependency("com.uwyn.rife2", "rife2", version(1,5,6)));
         scope(runtime)
             .include(dependency("org.postgresql", "postgresql", version(42,6,0)))
             .include(dependency("com.h2database", "h2", version(2,1,214)));
