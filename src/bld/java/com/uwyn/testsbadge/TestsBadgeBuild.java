@@ -25,7 +25,7 @@ public class TestsBadgeBuild extends WebProject {
         downloadSources = true;
         repositories = List.of(MAVEN_CENTRAL, SONATYPE_SNAPSHOTS);
         scope(compile)
-            .include(dependency("com.uwyn.rife2", "rife2", version(1, 5, 10)));
+            .include(dependency("com.uwyn.rife2", "rife2", version(1, 5, 11)));
         scope(runtime)
             .include(dependency("org.postgresql", "postgresql", version(42, 6, 0)))
             .include(dependency("com.h2database", "h2", version(2, 1, 214)));
@@ -40,12 +40,12 @@ public class TestsBadgeBuild extends WebProject {
             .include(dependency("org.slf4j", "slf4j-simple", version(2, 0, 7)));
     }
 
-    private final BadgeTestOperation badgeTestOperation_ = new BadgeTestOperation(properties().getValueString("testsBadgeApiKey"));
-
     @Override
     public void test()
     throws Exception {
-        badgeTestOperation_.executeOnce(o -> o.fromProject(this));
+        new BadgeTestOperation(properties().getValueString("testsBadgeApiKey"))
+            .fromProject(this)
+            .execute();
     }
 
     public static void main(String[] args) {
