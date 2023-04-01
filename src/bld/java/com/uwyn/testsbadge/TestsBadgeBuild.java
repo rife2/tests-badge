@@ -18,34 +18,34 @@ public class TestsBadgeBuild extends WebProject {
         name = "TestsBadge";
         mainClass = "com.uwyn.testsbadge.TestsBadgeSite";
         uberJarMainClass = "com.uwyn.testsbadge.TestsBadgeSiteUber";
-        version = version(1,4,1,"SNAPSHOT");
+        version = version(1, 4, 1, "SNAPSHOT");
 
         precompiledTemplateTypes = List.of(HTML, SVG, JSON);
 
         downloadSources = true;
         repositories = List.of(MAVEN_CENTRAL, SONATYPE_SNAPSHOTS);
         scope(compile)
-            .include(dependency("com.uwyn.rife2", "rife2", version(1,5,9)));
+            .include(dependency("com.uwyn.rife2", "rife2", version(1, 5, 10)));
         scope(runtime)
-            .include(dependency("org.postgresql", "postgresql", version(42,6,0)))
-            .include(dependency("com.h2database", "h2", version(2,1,214)));
+            .include(dependency("org.postgresql", "postgresql", version(42, 6, 0)))
+            .include(dependency("com.h2database", "h2", version(2, 1, 214)));
         scope(test)
-            .include(dependency("org.jsoup", "jsoup", version(1,15,4)))
-            .include(dependency("org.junit.jupiter", "junit-jupiter", version(5,9,2)))
-            .include(dependency("org.junit.platform", "junit-platform-console-standalone", version(1,9,2)))
+            .include(dependency("org.jsoup", "jsoup", version(1, 15, 4)))
+            .include(dependency("org.junit.jupiter", "junit-jupiter", version(5, 9, 2)))
+            .include(dependency("org.junit.platform", "junit-platform-console-standalone", version(1, 9, 2)))
             .include(dependency("org.json", "json", version(20230227)));
         scope(standalone)
-            .include(dependency("org.eclipse.jetty", "jetty-server", version(11,0,14)))
-            .include(dependency("org.eclipse.jetty", "jetty-servlet", version(11,0,14)))
-            .include(dependency("org.slf4j", "slf4j-simple", version(2,0,7)));
+            .include(dependency("org.eclipse.jetty", "jetty-server", version(11, 0, 14)))
+            .include(dependency("org.eclipse.jetty", "jetty-servlet", version(11, 0, 14)))
+            .include(dependency("org.slf4j", "slf4j-simple", version(2, 0, 7)));
     }
+
+    private final BadgeTestOperation badgeTestOperation_ = new BadgeTestOperation(properties().getValueString("testsBadgeApiKey"));
 
     @Override
     public void test()
     throws Exception {
-        new BadgeTestOperation(properties().getValueString("testsBadgeApiKey"))
-            .fromProject(this)
-            .execute();
+        badgeTestOperation_.executeOnce(o -> o.fromProject(this));
     }
 
     public static void main(String[] args) {
