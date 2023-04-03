@@ -5,6 +5,7 @@
 package com.uwyn.testsbadge;
 
 import rife.bld.WebProject;
+import rife.bld.publish.PublishInfo;
 
 import java.util.List;
 
@@ -18,26 +19,34 @@ public class TestsBadgeBuild extends WebProject {
         name = "TestsBadge";
         mainClass = "com.uwyn.testsbadge.TestsBadgeSite";
         uberJarMainClass = "com.uwyn.testsbadge.TestsBadgeSiteUber";
-        version = version(1, 4, 1, "SNAPSHOT");
+        version = version(1, 4, 2);
 
         precompiledTemplateTypes = List.of(HTML, SVG, JSON);
 
+        publishRepository = repository("rife2");
+        publishInfo = new PublishInfo()
+            .groupId("com.uwyn")
+            .artifactId("testsbadge")
+            .signKey(properties().getValueString("sign.key"))
+            .signPassphrase(properties().getValueString("sign.passphrase"));
+
+        javaRelease = 17;
         downloadSources = true;
-        repositories = List.of(MAVEN_CENTRAL, SONATYPE_SNAPSHOTS);
+        repositories = List.of(MAVEN_CENTRAL, RIFE2);
         scope(compile)
-            .include(dependency("com.uwyn.rife2", "rife2", version(1, 5, 11)));
+            .include(dependency("com.uwyn.rife2", "rife2", version(1,5,15)));
         scope(runtime)
-            .include(dependency("org.postgresql", "postgresql", version(42, 6, 0)))
-            .include(dependency("com.h2database", "h2", version(2, 1, 214)));
+            .include(dependency("org.postgresql", "postgresql", version(42,6,0)))
+            .include(dependency("com.h2database", "h2", version(2,1,214)));
         scope(test)
-            .include(dependency("org.jsoup", "jsoup", version(1, 15, 4)))
-            .include(dependency("org.junit.jupiter", "junit-jupiter", version(5, 9, 2)))
-            .include(dependency("org.junit.platform", "junit-platform-console-standalone", version(1, 9, 2)))
+            .include(dependency("org.jsoup", "jsoup", version(1,15,4)))
+            .include(dependency("org.junit.jupiter", "junit-jupiter", version(5,9,2)))
+            .include(dependency("org.junit.platform", "junit-platform-console-standalone", version(1,9,2)))
             .include(dependency("org.json", "json", version(20230227)));
         scope(standalone)
-            .include(dependency("org.eclipse.jetty", "jetty-server", version(11, 0, 14)))
-            .include(dependency("org.eclipse.jetty", "jetty-servlet", version(11, 0, 14)))
-            .include(dependency("org.slf4j", "slf4j-simple", version(2, 0, 7)));
+            .include(dependency("org.eclipse.jetty", "jetty-server", version(11,0,14)))
+            .include(dependency("org.eclipse.jetty", "jetty-servlet", version(11,0,14)))
+            .include(dependency("org.slf4j", "slf4j-simple", version(2,0,7)));
     }
 
     @Override
