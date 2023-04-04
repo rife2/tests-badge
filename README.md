@@ -6,8 +6,8 @@
 
 # Tests Badge
 
-This is a web service that generates a GitHub status badge reporting the number
-of passed and failed tests in your project.
+This is a web service that generates a status badge reporting the number of
+passed and failed tests in your project.
 
 It's up to you to integrate the web service API call into your test flow.
 
