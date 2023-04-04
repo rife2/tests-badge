@@ -23,6 +23,7 @@ jobs:
           java-version: ${{ matrix.java-version }}
 
       - name: Run tests
-        run: ./bld download compile test \
-          -DtestsBadgeUrl=https://rife2.com/tests-badge/update/com.uwyn/tests-badge \
-          -DtestsBadgeApiKey=${{ secrets.TESTS_BADGE_API_KEY }}
+        run: |
+          ./bld download compile test \
+            -DtestsBadgeUrl=https://rife2.com/tests-badge/update/com.uwyn/tests-badge \
+            -DtestsBadgeApiKey=${{ secrets.TESTS_BADGE_API_KEY }}
