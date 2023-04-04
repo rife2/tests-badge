@@ -51,12 +51,12 @@ public class TestsBadgeBuild extends WebProject {
             .include(dependency("org.slf4j", "slf4j-simple", version(2,0,7)));
     }
 
-    private final TestsBadgeOperation testsBadgeOperation = new TestsBadgeOperation(property("testsBadgeUrl"), property("testsBadgeApiKey"));
-
-    @Override
     public void test()
     throws Exception {
-        testsBadgeOperation.executeOnce(o -> o.fromProject(this));
+        new TestsBadgeOperation()
+            .url(property("testsBadgeUrl"))
+            .apiKey(property("testsBadgeApiKey"))
+            .fromProject(this).execute();
     }
 
     public static void main(String[] args) {
