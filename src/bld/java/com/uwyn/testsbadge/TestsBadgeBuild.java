@@ -19,7 +19,7 @@ public class TestsBadgeBuild extends WebProject {
         name = "TestsBadge";
         mainClass = "com.uwyn.testsbadge.TestsBadgeSite";
         uberJarMainClass = "com.uwyn.testsbadge.TestsBadgeSiteUber";
-        version = version(1, 4, 2);
+        version = version(1,4,2);
 
         precompiledTemplateTypes = List.of(HTML, SVG, JSON);
 
@@ -27,14 +27,15 @@ public class TestsBadgeBuild extends WebProject {
         publishInfo = new PublishInfo()
             .groupId("com.uwyn")
             .artifactId("testsbadge")
-            .signKey(properties().getValueString("sign.key"))
-            .signPassphrase(properties().getValueString("sign.passphrase"));
+            .signKey(property("sign.key"))
+            .signPassphrase(property("sign.passphrase"));
 
         javaRelease = 17;
         downloadSources = true;
+        autoDownloadPurge = true;
         repositories = List.of(MAVEN_CENTRAL, RIFE2);
         scope(compile)
-            .include(dependency("com.uwyn.rife2", "rife2", version(1,5,15)));
+            .include(dependency("com.uwyn.rife2", "rife2", version(1,5,16)));
         scope(runtime)
             .include(dependency("org.postgresql", "postgresql", version(42,6,0)))
             .include(dependency("com.h2database", "h2", version(2,1,214)));
@@ -52,7 +53,7 @@ public class TestsBadgeBuild extends WebProject {
     @Override
     public void test()
     throws Exception {
-        new BadgeTestOperation(properties().getValueString("testsBadgeApiKey"))
+        new BadgeTestOperation(property("testsBadgeApiKey"))
             .fromProject(this)
             .execute();
     }
