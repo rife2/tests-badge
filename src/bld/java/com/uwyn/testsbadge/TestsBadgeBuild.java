@@ -5,6 +5,7 @@
 package com.uwyn.testsbadge;
 
 import rife.bld.WebProject;
+import rife.bld.extension.TestsBadgeOperation;
 import rife.bld.publish.PublishInfo;
 
 import java.util.List;
@@ -53,7 +54,7 @@ public class TestsBadgeBuild extends WebProject {
     @Override
     public void test()
     throws Exception {
-        new BadgeTestOperation(property("testsBadgeApiKey"))
+        new TestsBadgeOperation("https://rife2.com/tests-badge/update/com.uwyn/tests-badge", property("testsBadgeApiKey"))
             .fromProject(this)
             .execute();
     }
