@@ -36,6 +36,7 @@ public class TestsBadgeBuild extends WebProject {
             .include(dependency("org.postgresql", "postgresql", version(42,6,0)))
             .include(dependency("com.h2database", "h2", version(2,1,214)));
         scope(test)
+            .include(dependency("org.eclipse.jetty.toolchain", "jetty-jakarta-servlet-api", version(5,0,2)))
             .include(dependency("org.jsoup", "jsoup", version(1,15,4)))
             .include(dependency("org.junit.jupiter", "junit-jupiter", version(5,9,2)))
             .include(dependency("org.junit.platform", "junit-platform-console-standalone", version(1,9,2)))
