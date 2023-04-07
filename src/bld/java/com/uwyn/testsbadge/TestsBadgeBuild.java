@@ -25,10 +25,32 @@ public class TestsBadgeBuild extends WebProject {
         uberJarMainClass = "com.uwyn.testsbadge.TestsBadgeSiteUber";
         version = version(1,4,3);
 
-        precompiledTemplateTypes = List.of(HTML, SVG, JSON);
+        javaRelease = 17;
+        downloadSources = true;
+        autoDownloadPurge = true;
 
-        publishRepository = version.isSnapshot() ? repository("rife2-snapshots") : repository("rife2-releases");
-        publishInfo = new PublishInfo()
+        repositories = List.of(MAVEN_CENTRAL, repository("https://repo.rife2.com/snapshots"), RIFE2);
+        scope(compile)
+            .include(dependency("com.uwyn.rife2", "rife2", version(1,5,18,"SNAPSHOT")));
+        scope(runtime)
+            .include(dependency("org.postgresql", "postgresql", version(42,6,0)))
+            .include(dependency("com.h2database", "h2", version(2,1,214)));
+        scope(test)
+            .include(dependency("org.jsoup", "jsoup", version(1,15,4)))
+            .include(dependency("org.junit.jupiter", "junit-jupiter", version(5,9,2)))
+            .include(dependency("org.junit.platform", "junit-platform-console-standalone", version(1,9,2)))
+            .include(dependency("org.json", "json", version(20230227)));
+        scope(standalone)
+            .include(dependency("org.eclipse.jetty", "jetty-server", version(11,0,14)))
+            .include(dependency("org.eclipse.jetty", "jetty-servlet", version(11,0,14)))
+            .include(dependency("org.slf4j", "slf4j-simple", version(2,0,7)));
+
+        precompileOperation()
+            .templateTypes(HTML, SVG, JSON);
+
+        publishOperation()
+            .repository(version.isSnapshot() ? repository("rife2-snapshots") : repository("rife2-releases"))
+            .info()
             .groupId("com.uwyn")
             .artifactId("testsbadge")
             .description("Status badge that reports the number of passed and failed tests in your project.")
@@ -47,29 +69,9 @@ public class TestsBadgeBuild extends WebProject {
                 .url("https://github.com/rife2/tests-badge"))
             .signKey(property("sign.key"))
             .signPassphrase(property("sign.passphrase"));
-
-        javaRelease = 17;
-        downloadSources = true;
-        autoDownloadPurge = true;
-        repositories = List.of(MAVEN_CENTRAL, RIFE2);
-        scope(compile)
-            .include(dependency("com.uwyn.rife2", "rife2", version(1,5,17)));
-        scope(runtime)
-            .include(dependency("org.postgresql", "postgresql", version(42,6,0)))
-            .include(dependency("com.h2database", "h2", version(2,1,214)));
-        scope(test)
-            .include(dependency("org.jsoup", "jsoup", version(1,15,4)))
-            .include(dependency("org.junit.jupiter", "junit-jupiter", version(5,9,2)))
-            .include(dependency("org.junit.platform", "junit-platform-console-standalone", version(1,9,2)))
-            .include(dependency("org.json", "json", version(20230227)));
-        scope(standalone)
-            .include(dependency("org.eclipse.jetty", "jetty-server", version(11,0,14)))
-            .include(dependency("org.eclipse.jetty", "jetty-servlet", version(11,0,14)))
-            .include(dependency("org.slf4j", "slf4j-simple", version(2,0,7)));
     }
 
     private final TestsBadgeOperation testsBadgeOperation = new TestsBadgeOperation();
-
     public void test()
     throws Exception {
         testsBadgeOperation.executeOnce(() -> testsBadgeOperation
