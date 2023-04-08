@@ -7,7 +7,6 @@ package com.uwyn.testsbadge;
 import rife.bld.WebProject;
 import rife.bld.extension.TestsBadgeOperation;
 import rife.bld.publish.PublishDeveloper;
-import rife.bld.publish.PublishInfo;
 import rife.bld.publish.PublishLicense;
 import rife.bld.publish.PublishScm;
 
@@ -29,9 +28,9 @@ public class TestsBadgeBuild extends WebProject {
         downloadSources = true;
         autoDownloadPurge = true;
 
-        repositories = List.of(MAVEN_CENTRAL, repository("https://repo.rife2.com/snapshots"), RIFE2);
+        repositories = List.of(MAVEN_CENTRAL, RIFE2_RELEASES);
         scope(compile)
-            .include(dependency("com.uwyn.rife2", "rife2", version(1,5,18,"SNAPSHOT")));
+            .include(dependency("com.uwyn.rife2", "rife2", version(1,5,18)));
         scope(runtime)
             .include(dependency("org.postgresql", "postgresql", version(42,6,0)))
             .include(dependency("com.h2database", "h2", version(2,1,214)));
@@ -52,24 +51,24 @@ public class TestsBadgeBuild extends WebProject {
         publishOperation()
             .repository(version.isSnapshot() ? repository("rife2-snapshots") : repository("rife2-releases"))
             .info()
-            .groupId("com.uwyn")
-            .artifactId("testsbadge")
-            .description("Status badge that reports the number of passed and failed tests in your project.")
-            .url("https://github.com/rife2/tests-badge")
-            .developer(new PublishDeveloper()
-                .id("gbevin")
-                .name("Geert Bevin")
-                .email("gbevin@uwyn.com")
-                .url("https://github.com/gbevin"))
-            .license(new PublishLicense()
-                .name("The Apache License, Version 2.0")
-                .url("https://www.apache.org/licenses/LICENSE-2.0.txt"))
-            .scm(new PublishScm()
-                .connection("scm:git:https://github.com/rife2/tests-badge.git")
-                .developerConnection("scm:git:git@github.com:rife2/tests-badge.git")
-                .url("https://github.com/rife2/tests-badge"))
-            .signKey(property("sign.key"))
-            .signPassphrase(property("sign.passphrase"));
+                .groupId("com.uwyn")
+                .artifactId("testsbadge")
+                .description("Status badge that reports the number of passed and failed tests in your project.")
+                .url("https://github.com/rife2/tests-badge")
+                .developer(new PublishDeveloper()
+                    .id("gbevin")
+                    .name("Geert Bevin")
+                    .email("gbevin@uwyn.com")
+                    .url("https://github.com/gbevin"))
+                .license(new PublishLicense()
+                    .name("The Apache License, Version 2.0")
+                    .url("https://www.apache.org/licenses/LICENSE-2.0.txt"))
+                .scm(new PublishScm()
+                    .connection("scm:git:https://github.com/rife2/tests-badge.git")
+                    .developerConnection("scm:git:git@github.com:rife2/tests-badge.git")
+                    .url("https://github.com/rife2/tests-badge"))
+                .signKey(property("sign.key"))
+                .signPassphrase(property("sign.passphrase"));
     }
 
     private final TestsBadgeOperation testsBadgeOperation = new TestsBadgeOperation();
