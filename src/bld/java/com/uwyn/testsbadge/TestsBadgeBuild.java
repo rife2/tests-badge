@@ -30,7 +30,7 @@ public class TestsBadgeBuild extends WebProject {
 
         repositories = List.of(MAVEN_CENTRAL, RIFE2_RELEASES);
         scope(compile)
-            .include(dependency("com.uwyn.rife2", "rife2", version(1,5,20)));
+            .include(dependency("com.uwyn.rife2", "rife2", version(1,5,22)));
         scope(runtime)
             .include(dependency("org.postgresql", "postgresql", version(42,6,0)))
             .include(dependency("com.h2database", "h2", version(2,1,214)));
@@ -41,8 +41,8 @@ public class TestsBadgeBuild extends WebProject {
             .include(dependency("org.junit.platform", "junit-platform-console-standalone", version(1,9,2)))
             .include(dependency("org.json", "json", version(20230227)));
         scope(standalone)
-            .include(dependency("org.eclipse.jetty", "jetty-server", version(11,0,14)))
-            .include(dependency("org.eclipse.jetty", "jetty-servlet", version(11,0,14)))
+            .include(dependency("org.eclipse.jetty", "jetty-server", version(11,0,15)))
+            .include(dependency("org.eclipse.jetty", "jetty-servlet", version(11,0,15)))
             .include(dependency("org.slf4j", "slf4j-simple", version(2,0,7)));
 
         precompileOperation()
