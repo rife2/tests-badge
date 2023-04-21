@@ -30,7 +30,7 @@ public class TestsBadgeBuild extends WebProject {
 
         repositories = List.of(MAVEN_CENTRAL, RIFE2_RELEASES);
         scope(compile)
-            .include(dependency("com.uwyn.rife2", "rife2", version(1,5,22)));
+            .include(dependency("com.uwyn.rife2", "rife2", version(1,6,0)));
         scope(runtime)
             .include(dependency("org.postgresql", "postgresql", version(42,6,0)))
             .include(dependency("com.h2database", "h2", version(2,1,214)));
