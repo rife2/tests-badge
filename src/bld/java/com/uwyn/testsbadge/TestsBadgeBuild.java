@@ -22,7 +22,7 @@ public class TestsBadgeBuild extends WebProject {
         name = "TestsBadge";
         mainClass = "com.uwyn.testsbadge.TestsBadgeSite";
         uberJarMainClass = "com.uwyn.testsbadge.TestsBadgeSiteUber";
-        version = version(1,4,3);
+        version = version(1,5,0);
 
         javaRelease = 17;
         downloadSources = true;
