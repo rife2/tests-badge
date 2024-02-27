@@ -32,17 +32,17 @@ public class TestsBadgeBuild extends WebProject {
         scope(compile)
             .include(dependency("com.uwyn.rife2", "rife2", version(1,7,3)));
         scope(runtime)
-            .include(dependency("org.postgresql", "postgresql", version(42,7,1)))
+            .include(dependency("org.postgresql", "postgresql", version(42,7,2)))
             .include(dependency("com.h2database", "h2", version(2,2,224)));
         scope(test)
             .include(dependency("org.jsoup", "jsoup", version(1,17,2)))
-            .include(dependency("org.junit.jupiter", "junit-jupiter", version(5,10,1)))
-            .include(dependency("org.junit.platform", "junit-platform-console-standalone", version(1,10,1)))
-            .include(dependency("org.json", "json", version(20231013)));
+            .include(dependency("org.junit.jupiter", "junit-jupiter", version(5,10,2)))
+            .include(dependency("org.junit.platform", "junit-platform-console-standalone", version(1,10,2)))
+            .include(dependency("org.json", "json", version(20240205)));
         scope(standalone)
-            .include(dependency("org.eclipse.jetty.ee10", "jetty-ee10", version(12,0,5)))
-            .include(dependency("org.eclipse.jetty.ee10", "jetty-ee10-servlet", version(12,0,5)))
-            .include(dependency("org.slf4j", "slf4j-simple", version(2,0,11)));
+            .include(dependency("org.eclipse.jetty.ee10", "jetty-ee10", version(12,0,6)))
+            .include(dependency("org.eclipse.jetty.ee10", "jetty-ee10-servlet", version(12,0,6)))
+            .include(dependency("org.slf4j", "slf4j-simple", version(2,0,12)));
 
         precompileOperation()
             .templateTypes(HTML, SVG, JSON);
