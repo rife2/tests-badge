@@ -8,7 +8,8 @@
   <p>Create a new badge access by providing the following information.</p>
 
   <!--i common.errors/-->
-  <form action="{{v route:/}}" method="post">
+  <form name="api" action="{{v route:action:/}}" method="post">
+    <!--v route:inputs:/-->
     <div id="api-details">
       <label for="groupId" class="{{v mark:groupId}}{{/v}}">Group ID</label>
       <span>

@@ -16,6 +16,7 @@ import rife.database.exceptions.ExecutionErrorException;
 import rife.database.querymanagers.generic.GenericQueryManager;
 import rife.database.querymanagers.generic.GenericQueryManagerFactory;
 import rife.engine.*;
+import rife.engine.elements.CsrfProtected;
 import rife.template.TemplateFactory;
 
 public class TestsBadgeSite extends Site {
@@ -92,11 +93,16 @@ public class TestsBadgeSite extends Site {
     }
 
     private void setupApiAdmin() {
-        login = route("/login", new Login(config, TemplateFactory.HTML.get("login")));
         group(new Router() {
             public void setup() {
-                before(new Authenticated(config));
-                api = route("/api", Api.class);
+                before(new CsrfProtected());
+                login = route("/login", new Login(config, TemplateFactory.HTML.get("login")));
+                group(new Router() {
+                    public void setup() {
+                        before(new Authenticated(config));
+                        api = route("/api", Api.class);
+                    }
+                });
             }
         });
         fallback(c -> c.redirect("https://github.com/rife2/tests-badge"));

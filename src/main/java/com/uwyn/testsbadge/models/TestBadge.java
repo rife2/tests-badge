@@ -28,7 +28,7 @@ public class TestBadge extends MetaData {
         addConstraint(new ConstrainedProperty("artifactId")
             .notNull(true)
             .notEmpty(true));
-        addConstraint(new ConstrainedProperty("date")
+        addConstraint(new ConstrainedProperty("updated")
             .notNull(true));
         addConstraint(new ConstrainedProperty("passed")
             .notNull(true)

@@ -1,6 +1,6 @@
 [![License](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Java](https://img.shields.io/badge/java-17%2B-blue)](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)
-[![bld](https://img.shields.io/badge/2.2.1-FA9052?label=bld&labelColor=2392FF)](https://rife2.com/bld)
+[![bld](https://img.shields.io/badge/3.0.1-FA9052?label=bld&labelColor=2392FF)](https://rife2.com/bld)
 [![Release](https://img.shields.io/github/release/rife2/tests-badge.svg)](https://github.com/rife2/tests-badge/releases/latest)
 [![GitHub CI](https://github.com/rife2/tests-badge/actions/workflows/bld.yml/badge.svg)](https://github.com/rife2/tests-badge/actions/workflows/bld.yml)
 [![Tests](https://rife2.com/tests-badge/badge/com.uwyn/tests-badge)](https://github.com/rife2/tests-badge/actions/workflows/bld.yml)
@@ -111,15 +111,51 @@ The test count parameters are optional, you can leave any of them out and the
 previous count will simply continue to be reported.
 
 How to automatically call this service endpoint is dependent on your project and
-infrastructure set up. For GitHub and Gradle, this is how I'm setting this up.
+infrastructure set up. For GitHub with bld or Gradle, this is how I'm setting this up.
+
+### Update your `bld` project
+
+The [bld-tests-badge](https://github.com/rife2/bld-tests-badge) extension
+replaces the `test` command and reports the test counts once the tests have
+run. Add it to `lib/bld/bld-wrapper.properties`:
+
+```properties
+bld.extensions=com.uwyn.rife2:bld-tests-badge:1.6.5
+```
+
+Then override the `test` command in your build:
+
+```java
+private final TestsBadgeOperation testsBadgeOperation = new TestsBadgeOperation();
+
+public void test()
+throws Exception {
+    testsBadgeOperation.executeOnce(() -> testsBadgeOperation
+        .url(property("testsBadgeUrl"))
+        .apiKey(property("testsBadgeApiKey"))
+        .fromProject(this));
+}
+```
+
+The URL and API key are passed in as properties, for example in a GitHub
+workflow:
+
+```yaml
+- name: Run tests
+  run: >-
+    ./bld download compile test
+    -DtestsBadgeUrl=http://localhost:8080/update/com.uwyn.testsbadge/tests-badge
+    -DtestsBadgeApiKey=${{ secrets.TESTS_BADGE_API_KEY }}
+```
 
 ### Update `build.gradle.kts`
 
 You can hook a test listener into the Gradle test task, for example:
 
 ```kotlin
-test {
-    val apiKey = project.properties["testsBadgeApiKey"]
+val testsBadgeApiKey = providers.gradleProperty("testsBadgeApiKey")
+
+tasks.test {
     useJUnitPlatform()
     testLogging {
         exceptionFormat = TestExceptionFormat.FULL
@@ -135,7 +171,8 @@ test {
                 val failed = result.failedTestCount
                 val skipped = result.skippedTestCount
 
-                if (apiKey != null) {
+                if (testsBadgeApiKey.isPresent) {
+                    val apiKey = testsBadgeApiKey.get()
                     val response: HttpResponse<String> = HttpClient.newHttpClient()
                         .send(
                             HttpRequest.newBuilder()
@@ -195,7 +232,7 @@ In order to get a war to deploy, all that's necessary is running:
 You can deploy this war file in a regular servlet container as any other war
 file. It is set up to use PostgreSQL in production, instead of the embedded H2
 database.
-If you want to change this, take a look at [src/main/java/com/uwyn/testsbadge/TestsBadgeSite.java](https://github.com/rife2/tests-badge/blob/main/app/src/main/java/com/uwyn/testsbadge/TestsBadgeSite.java).
+If you want to change this, take a look at [src/main/java/com/uwyn/testsbadge/TestsBadgeSite.java](https://github.com/rife2/tests-badge/blob/main/src/main/java/com/uwyn/testsbadge/TestsBadgeSite.java).
 
 The following production configuration properties are supported:
 
@@ -215,7 +252,7 @@ provide application properties at many levels in the execution hierarchy, for
 instance through JVM properties, web.xml init-attributes, inside the route
 configuration, ...
 
-I recommend tweaking the [web.xml](https://github.com/rife2/tests-badge/blob/main/war/src/web.xml)
+I recommend tweaking the [web.xml](https://github.com/rife2/tests-badge/blob/main/src/main/webapp/WEB-INF/web.xml)
 file and adding `init-param`s in order to set any of the properties above.
 
 ## Contact me to have me host your badge

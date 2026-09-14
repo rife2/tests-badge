@@ -22,7 +22,7 @@ public class TestsBadgeBuild extends WebProject {
         name = "TestsBadge";
         mainClass = "com.uwyn.testsbadge.TestsBadgeSite";
         uberJarMainClass = "com.uwyn.testsbadge.TestsBadgeSiteUber";
-        version = version(1,5,5);
+        version = version(1,6,0);
 
         javaRelease = 17;
         downloadSources = true;
@@ -30,19 +30,18 @@ public class TestsBadgeBuild extends WebProject {
 
         repositories = List.of(MAVEN_CENTRAL, RIFE2_RELEASES);
         scope(compile)
-            .include(dependency("com.uwyn.rife2", "rife2", version(1,9,1)));
+            .include(dependency("com.uwyn.rife2", "rife2", version(1,10,1)));
         scope(runtime)
-            .include(dependency("org.postgresql", "postgresql", version(42,7,4)))
-            .include(dependency("com.h2database", "h2", version(2,3,232)));
+            .include(dependency("org.postgresql", "postgresql", version(42,7,13)))
+            .include(dependency("com.h2database", "h2", version(2,5,250)));
         scope(test)
-            .include(dependency("org.jsoup", "jsoup", version(1,18,3)))
-            .include(dependency("org.junit.jupiter", "junit-jupiter", version(5,11,4)))
-            .include(dependency("org.junit.platform", "junit-platform-console-standalone", version(1,11,4)))
-            .include(dependency("org.json", "json", version(20250107)));
+            .include(dependency("org.jsoup", "jsoup", version(1,23,2)))
+            .include(dependency("org.junit.jupiter", "junit-jupiter", version(6,1,3)))
+            .include(dependency("org.junit.platform", "junit-platform-console-standalone", version(6,1,3)));
         scope(standalone)
-            .include(dependency("org.eclipse.jetty.ee10", "jetty-ee10", version(12,0,16)))
-            .include(dependency("org.eclipse.jetty.ee10", "jetty-ee10-servlet", version(12,0,16)))
-            .include(dependency("org.slf4j", "slf4j-simple", version(2,0,16)));
+            .include(dependency("org.eclipse.jetty.ee10", "jetty-ee10", version(12,1,13)))
+            .include(dependency("org.eclipse.jetty.ee10", "jetty-ee10-servlet", version(12,1,13)))
+            .include(dependency("org.slf4j", "slf4j-simple", version(2,0,19)));
 
         precompileOperation()
             .templateTypes(HTML, SVG, JSON);

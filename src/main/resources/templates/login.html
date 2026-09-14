@@ -6,7 +6,8 @@
   <h1>Tests Badge API</h1>
 
   <!--i common.errors/-->
-  <form name="credentials" action="{{v route:/}}" method="post">
+  <form name="credentials" action="{{v route:action:/}}" method="post">
+    <!--v route:inputs:/-->
     <input name="login" value="{{v param:login}}{{/v}}" type="text">
     <input name="password" type="password"><br>
     <input type="submit" value="Login">
